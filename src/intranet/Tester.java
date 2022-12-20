@@ -4,12 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import proj.Database;
-import proj.Manager;
-import proj.Managers;
-import proj.Mark;
-
-
 public class Tester {
 
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -26,8 +20,8 @@ public class Tester {
         Database.users.add(t1);
         Database.users.add(t2);
 
-        Admin a1 = new Admin("Alfiya", "Khalitova", "22/09/1977", "8 777-222-22-22", "admin1@gmail.com", "11111");
-        Admin a2 = new Admin("Leyla", "Rozykovna", "22/02/1973", "8 777-222-22-23", "admin2@gmail.com", "11112");
+        Admin a1 = new Admin("Alfiya", "Khalitova", "22/09/1977", "8 777-222-22-22", "admin1@gmail.com", "12345");
+        Admin a2 = new Admin("Leyla", "Rozykovna", "22/02/1973", "8 777-222-22-23", "admin2@gmail.com", "12345");
         Database.users.add(a1);
         Database.users.add(a2);
 
@@ -36,18 +30,18 @@ public class Tester {
         Database.messages.add(me1);
         Database.messages.add(me2);
 
-        Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "123456", "20b030760", 3, Faculty.FIT, Degree.BACHELOR);
-        Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "123456", "20b000000", 3, Faculty.FIT, Degree.BACHELOR);
+        Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "12345", "20b030760", 3, Faculty.FIT, Degree.BACHELOR);
+        Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "12345", "20b000000", 3, Faculty.FIT, Degree.BACHELOR);
         Database.users.add(s1);
         Database.users.add(s2);
 
-        Librarian l1 = new Librarian("Librarian1", "Librarianov1", "21/12/1960", "8 777-123-34-55", "lib1@gmai.com", "12333");
-        Librarian l2 = new Librarian("Librarian2", "Librarianov2", "20/12/1961", "8 777-123-34-51", "lib2@gmai.com", "12333");
+        Librarian l1 = new Librarian("Librarian1", "Librarianov1", "21/12/1960", "8 777-123-34-55", "lib1@gmai.com", "12345");
+        Librarian l2 = new Librarian("Librarian2", "Librarianov2", "20/12/1961", "8 777-123-34-51", "lib2@gmai.com", "12345");
         Database.users.add(l1);
         Database.users.add(l2);
         
-        Manager m1 = new Manager("Dana", "Akhmetzhan", "21/01/1985", " 8 707-111-11-11", "dana@gmail.com", "12222", Managers.DEPARTMENTS); 
-        Manager m2 = new Manager("Nazym", "Aidarkhanova", "8/03/1983", " 8 707-112-12-12", "nazym@gmail.com", "12223", Managers.OR); 
+        Manager m1 = new Manager("Dana", "Akhmetzhan", "21/01/1985", " 8 707-111-11-11", "dana@gmail.com", "12345", Managers.DEPARTMENTS); 
+        Manager m2 = new Manager("Nazym", "Aidarkhanova", "8/03/1983", " 8 707-112-12-12", "nazym@gmail.com", "12345", Managers.OR); 
         Database.users.add(m1); 
         Database.users.add(m2); 
 
@@ -70,12 +64,14 @@ public class Tester {
         Database.files.add(f3);
         Database.files.add(f4);
         
-        Database.studentRegistration.put("20b030760", c1);
-        Database.studentRegistration.put("20b030760", c2);
         Database.teacherRatings.put("Zhomart", 5);
         Database.teacherRatings.put("Zhomart", 5);
         Database.teacherRatings.put("Zhomart", 5);
         
+        s1.courseMarks.put(c1, null);
+        s1.courseMarks.put(c2, null);
+        
+        t1.putMark("Software Engineering", "20b030760", 30.0, 30.0, 40.0);
 
         Database.save();
         Database.load();
@@ -335,18 +331,14 @@ public class Tester {
                                     "7. Add news\n" +
                                     "8. Remove news\n" +
                                     "9. Update news\n" +
-                                    "10. Get max score of students\n" +
-                                    "11. Get min score of students\n" +
-                                    "12. Get average score of students\n" +
-                                    "13. Get number of retakes\n" +
-                                    "14. Order of students by GPA\n" +
-                                    "15. Order students alphabetically\n" +
-                                    "16. Order teachers alphabetically\n" +
-                                    "17. Order teachers by status\n" +
-                                    "18. View news\n" +
-                                    "19. View messages\n" +
-                                    "20. Send message\n" +
-                                    "21. Quit\n" +
+                                    "10. Order of students by GPA\n" +
+                                    "11. Order students alphabetically\n" +
+                                    "12. Order teachers alphabetically\n" +
+                                    "13. Order teachers by status\n" +
+                                    "14. View news\n" +
+                                    "15. View messages\n" +
+                                    "16. Send message\n" +
+                                    "17. Quit\n" +
                                     "0. Change password");
 
                             int chosen = Integer.parseInt(reader.readLine());
@@ -425,33 +417,21 @@ public class Tester {
                                     System.out.println("News are updated.");
                                     break;
                                 case 10:
-                                    System.out.println(m.getMaxScore());
-                                    break;
-                                case 11:
-                                    System.out.println(m.getMinScore());
-                                    break;
-                                case 12:
-                                    System.out.println(m.getAvgScore());
-                                    break;
-                                case 13:
-                                    System.out.println(m.retakeCount());
-                                    break;
-                                case 14:
                                     System.out.println(m.orderStudentsByGPA());
                                     break;
-                                case 15:
+                                case 11:
                                     System.out.println(m.orderStudentsAlphabetically());
                                     break;
-                                case 16:
+                                case 12:
                                     System.out.println(m.orderTeachersAlphabetically());
                                     break;
-                                case 17:
+                                case 13:
                                     System.out.println(m.orderTeachersStatus());
                                     break;
-                                case 18:
+                                case 14:
                                     System.out.println(m.viewNewsTab());
                                     break;
-                                case 19:
+                                case 15:
                                     String messageFrom = m.getName();
                                     System.out.println("Enter employee login you want to message to: ");
                                     String messageTo = reader.readLine();
@@ -463,10 +443,10 @@ public class Tester {
                                     Database.save();
                                     System.out.println("Message sent");
                                     break;
-                                case 20:
+                                case 16:
                                     System.out.println(m.getMessages());
                                     break;
-                                case 21:
+                                case 17:
                                     System.exit(0);
                                 case 0:
                                     System.out.println("Enter old password: ");
@@ -644,7 +624,7 @@ public class Tester {
                                     String bookTitle = reader.readLine();
                                     System.out.println("Enter book's id: ");
                                     String bookId = reader.readLine();
-                                    System.out.println("Enter book's id: ");
+                                    System.out.println("Enter book's author: ");
                                     String bookAuthor = reader.readLine();
                                     l.addBook(bookTitle, bookId, bookAuthor);
                                     Database.save();

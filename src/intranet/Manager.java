@@ -33,11 +33,11 @@ public class Manager extends Employee {
     public void createCourse(String name, int credits, String courseId) {
         
         Course newCourse = new Course(name, credits, courseId);
-    	for (Course course: Database.courses) {
-        	if (!course.getCourseId().equals(courseId)) {
-        		Database.courses.add(newCourse);
-        	}
-    	}
+      for (Course course: Database.courses) {
+          if (!course.getCourseId().equals(courseId)) {
+            Database.courses.add(newCourse);
+          }
+      }
     }
     /**
     * @generated
@@ -80,6 +80,7 @@ public class Manager extends Employee {
         return Database.studentRegistration.toString();
     }
 
+
     public String approveRegistration(String studentId, String courseId, String approve) {
         Student st = new Student();
         for(User user : Database.users) {
@@ -96,9 +97,8 @@ public class Manager extends Employee {
                 c = course;
             }
         }
-
         for(HashMap.Entry<String, Course> item : Database.studentRegistration.entrySet()) {
-            if(item.getKey().equals(studentId) && item.getValue().equals(c)) {
+            if(item.getKey().equals(studentId) && item.getValue().getCourseId().equals(c.getCourseId())) {
                 if(approve.equals("ACCEPT")) {
                     Database.studentRegistration.remove(studentId, c);
                     st.increaseCredits(c.getCredits());
@@ -156,55 +156,9 @@ public class Manager extends Employee {
         }
         // newsDoesNotExistingException
 
+
     }
-    /**
-    * @generated
-    */
-    public Double getMaxScore() {
-        Double mx = 0.0;
-        for (Mark mark : Database.marks) {
-            if(mark.getTotalGrade() > mx) {
-                mx = mark.getTotalGrade();
-            }
-        }
-        return mx;
-    }
-    /**
-    * @generated
-    */
-    public Double getMinScore() {
-        Double mn = 1000.0;
-        for (Mark mark : Database.marks) {
-            if(mark.getTotalGrade() < mn) {
-                mn = mark.getTotalGrade();
-            }
-        }
-        return mn;
-    }
-    /**
-    * @generated
-    */
-    public Double getAvgScore() {
-        Double avg = 0.0;
-        int cnt = 0;
-        for (Mark mark : Database.marks) {
-            cnt ++;
-            avg += mark.getTotalGrade();            
-        }
-        return avg / cnt;
-    }
-    /**
-    * @generated
-    */
-    public int retakeCount() {
-        int retakeCount = 0;
-        for(Mark mark : Database.marks) {
-            if(mark.getTotalGrade() < 50) {
-                retakeCount ++;
-            }
-        }
-        return retakeCount;
-    }
+
     /**
     * @generated
     */
@@ -264,6 +218,7 @@ public class Manager extends Employee {
             + "\n\n";
         }
         return ans;
+
 
     }
     /**

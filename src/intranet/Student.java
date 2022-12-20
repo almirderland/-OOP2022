@@ -163,7 +163,8 @@ public class Student extends User {
     public void dropCourse(String courseId) {
         for (Course course : this.courseMarks.keySet()) {
             if (course.getCourseId().equals(courseId)) {
-                this.courseMarks.keySet().remove(course);
+                this.courseMarks.remove(course);
+                break;
             }
         }
         // courseDoesNotExistException
@@ -191,20 +192,25 @@ public class Student extends User {
                 Student student = (Student) user;
                 if (student.getId().equals(this.id)) {
                     for (Map.Entry<Course, Mark> courseMark : student.courseMarks.entrySet()) {
-                        points += courseMark.getValue().getTotalGrade();
-                        i++;
-                        s += i + ") Course Name: " + courseMark.getKey().getCourseName()
-                                + "\n    First Att.: " + courseMark.getValue().getFirstAtt()
-                                + "\n    Second Att.: " + courseMark.getValue().getSecondAtt()
-                                + "\n    Final Grade: " + courseMark.getValue().getFinalGrade()
-                                + "\n    Total Grade: " + courseMark.getValue().getTotalGrade() + " " + courseMark.getValue().convertToLetter() + " " + courseMark.getValue().convertToGPA() + "\n";
+                    	if (courseMark.getValue() != null) {
+	                    	points += courseMark.getValue().getTotalGrade();
+	                    	System.out.println(points);
+	                        i++;
+	                        s += i + ") Course Name: " + courseMark.getKey().getCourseName()
+	                                + "\n    First Att.: " + courseMark.getValue().getFirstAtt()
+	                                + "\n    Second Att.: " + courseMark.getValue().getSecondAtt()
+	                                + "\n    Final Grade: " + courseMark.getValue().getFinalGrade()
+	                                + "\n    Total Grade: " + courseMark.getValue().getTotalGrade() + " " + courseMark.getValue().convertToLetter() + " " + courseMark.getValue().convertToGPA() + "\n";
+                    	}
                     }
                 }
             }
         }
         points /= i;
+        System.out.println(points);
         Mark mark = new Mark();
         mark.setTotalGrade(points);
+        System.out.println(mark.getTotalGrade());
         s += "Total GPA: " + mark.convertToGPA();
         return s;
     }
@@ -216,20 +222,6 @@ public class Student extends User {
         return "Transcript is downloaded";
     }
 
-    /**
-     * @generated
-     */
-    public String viewCourses() {
-        String s = "";
-        int i = 0;
-        for (Course course : Database.courses) {
-            i++;
-            s += i + ") Course Name: " + course.getCourseName()
-                    + "\n    Description: " + course.getDescription()
-                    + "\n    Course ID: " + course.getCourseId() + "\n\n";
-        }
-        return s;
-    }
 
     /**
      * @generated
