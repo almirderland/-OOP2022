@@ -30,8 +30,8 @@ public class Tester {
         Database.messages.add(me1);
         Database.messages.add(me2);
 
-        Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "12345", "20b030760", 3, Faculty.FIT, Degree.BACHELOR);
-        Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "12345", "20b000000", 3, Faculty.FIT, Degree.BACHELOR);
+        Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "12345", "20b030760", 3, Faculty.SITE, Degree.BACHELOR);
+        Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "12345", "20b000000", 3, Faculty.SITE, Degree.BACHELOR);
         Database.users.add(s1);
         Database.users.add(s2);
 
@@ -102,12 +102,13 @@ public class Tester {
                                     "4. View Teacher info\n" +
                                     "5. View marks\n" +
                                     "6. View transcript\n" +
-                                    "7. Rate teacher\n" +
-                                    "8. Order book\n" +
-                                    "9. Register to Course\n" +
-                                    "10. Drop Course\n" +
-                                    "11. View news\n" +
-                                    "12. Quit\n" +
+                                    "7. Get transcript\n" +
+                                    "8. Rate teacher\n" +
+                                    "9. Order book\n" +
+                                    "10. Register to Course\n" +
+                                    "11. Drop Course\n" +
+                                    "12. View news\n" +
+                                    "13. Quit\n" +
                                     "0. Change password\n"
                             );
 
@@ -136,7 +137,9 @@ public class Tester {
                                 case 6:
                                     System.out.println(st.viewTranscript());
                                     break;
-                                case 7:
+                                case 7: 
+                                	System.out.println(st.getTranscript());
+                                case 8:
                                     System.out.println("Enter Teacher's name: ");
                                     String teacherName = reader.readLine();
                                     System.out.println("Enter 1-5 stars: ");
@@ -145,14 +148,14 @@ public class Tester {
                                     Database.save();
                                     System.out.println("Thank you for your feedback!");
                                     break;
-                                case 8:
+                                case 9:
                                     System.out.println("Enter BookId: ");
                                     String bookId = reader.readLine();
                                     st.orderBook(bookId);
                                     Database.save();
                                     System.out.println("Your order has been completed.");
                                     break;
-                                case 9:
+                                case 10:
                                     System.out.println("Enter courseId: ");
                                     String courseId1 = reader.readLine();
                                     st.registerToCourse(courseId1);
@@ -167,17 +170,17 @@ public class Tester {
                                     }
                                     System.out.println("Your request is fulfilled");
                                     break;
-                                case 10:
+                                case 11:
                                     System.out.println("Enter courseId: ");
                                     String courseId2 = reader.readLine();
                                     st.dropCourse(courseId2);
                                     Database.save();
                                     System.out.println("Your course has been removed.");
                                     break;
-                                case 11:
+                                case 12:
                                     System.out.println(st.viewNewsTab());
                                     break;
-                                case 12:
+                                case 13:
                                     System.exit(0);
                                 case 0:
                                     System.out.println("Enter old password: ");

@@ -1,13 +1,14 @@
 package intranet;
 
 public enum Faculty {
-    FIT,
-    FGGE,
-    ISE,
-    FGE,
+	SGGE,
+	SEPI,
+	SITE,
+	SNSS,
     FEOG,
     BS,
     SMC,
     KMA,
-    CCE
+    SCE,
+    SMSGT
 }
