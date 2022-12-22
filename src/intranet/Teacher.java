@@ -137,15 +137,12 @@ public class Teacher extends Employee {
 
     public void putMark(String courseName, String studentId, Double firstAtt, Double secondAtt, Double finalGrade) {
         Mark m = new Mark(firstAtt, secondAtt, finalGrade);
-        System.out.println(m);
         for(User user : Database.users){
             if(user instanceof Student)
             {
                 Student student = (Student) user;
                 if(student.getId().equals(studentId)) {
-                	System.out.println(123456);
                     for (Map.Entry<Course, Mark> courseMark : student.courseMarks.entrySet()) {
-                    	System.out.println(courseMark.getKey().getCourseName());
                         if(courseMark.getKey().getCourseName().equals(courseName)){
                             courseMark.setValue(m);
                         }

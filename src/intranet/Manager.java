@@ -97,14 +97,9 @@ public class Manager extends Employee {
                 c = course;
             }
         }
-        System.out.println(st);
-        System.out.println(c);
         for(HashMap.Entry<String, Course> item : Database.studentRegistration.entrySet()) {
-        	System.out.println(item.getKey());
-        	System.out.println(item.getValue());
             if(item.getKey().equals(studentId) && item.getValue().getCourseId().equals(c.getCourseId())) {
                 if(approve.equals("ACCEPT")) {
-                	System.out.println(12);
                     Database.studentRegistration.remove(studentId, c);
                     st.increaseCredits(c.getCredits());
                     st.courseMarks.put(c,null);
@@ -113,7 +108,7 @@ public class Manager extends Employee {
                     Database.studentRegistration.remove(studentId, c);
                     return "Student's registration is rejected";
                 }
-            } else return "This order does not exist";
+            }
         }
         return "Orders does not exist";
     }

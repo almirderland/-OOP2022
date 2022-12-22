@@ -40,7 +40,7 @@ public class Tester {
          m1.approveRegistration(s1.getId(), c1.getCourseId(), "ACCEPT");
          m1.approveRegistration(s2.getId(), c1.getCourseId(), "ACCEPT");
          
-         t1.putMark(c1.getCourseName(), s1.getId(), 10.0, 20.0, 10.0);
+         t1.putMark(c1.getCourseName(), s1.getId(), 10.0, 0.0, 0.0);
          t1.putMark(c1.getCourseName(), s2.getId(), 30.0, 30.0, 40.0);
 
          Database.save();
@@ -51,7 +51,7 @@ public class Tester {
         String input = reader.readLine();
         if (input.equals("q")) {
             System.exit(0);
-        }
+        } 
         for (User u : Database.users) {
             if (u.getLogin().equals(input)) {
                 System.out.println("Enter password: ");
@@ -660,6 +660,6 @@ public class Tester {
                 }
             }
         }
-
+        System.out.println("Invalid login");
     }
 }

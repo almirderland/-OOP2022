@@ -110,7 +110,6 @@ public class Student extends User {
             if (course.getCourseId().equals(courseID)) {
                 newCourse = course;
                 if (this.chosenCredits+newCourse.getCredits() <= this.creditLimit && newCourse.getIsAvailable()) {
-                	System.out.println(this.id);
                     Database.studentRegistration.put(this.id, newCourse);
                 } else {
                     throw new CreditOverFlow("Number of credits exceeded or Course is not available!!!");
