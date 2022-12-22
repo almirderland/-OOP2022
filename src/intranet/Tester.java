@@ -9,73 +9,75 @@ public class Tester {
     static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, CreditOverFlow {
+    
+//    	z.aldamuratov@kbtu.kz
+    	 Course c1 = new Course("Object-oriented programming", 5, "CSCI2106");
+         Course c2 = new Course("Software Engineering", 5, "CSCI2208");
+         Database.courses.add(c1);
+         Database.courses.add(c2);
 
-        Course c1 = new Course("Object-oriented programming", 5, "CSCI2106");
-        Course c2 = new Course("Software Engineering", 5, "CSCI2208");
-        Database.courses.add(c1);
-        Database.courses.add(c2);
+         Teacher t1 = new Teacher("Mels", "Begenov", "22/02/1983", "8 777-123-23-23", "mels@gmail.com", "12345", Status.SENIOR_LECTOR, "10 years");
+         Teacher t2 = new Teacher("Aldamuratov", "Zhomart", "22/02/1983", "8 777-123-23-23", "kibokz.a@gmail.com", "12345", Status.SENIOR_LECTOR, "10 years");
+         Database.users.add(t1);
+         Database.users.add(t2);
+         Teacher t3 = new Teacher("Shamoi", "Pakita", "22/12/2022", "8 777-123-23-23", "pakitasan@gmail.com", "12345", Status.SENIOR_LECTOR, "10 years");
+         Database.users.add(t3);
+         
+         Admin a1 = new Admin("Alfiya", "Khalitova", "22/09/1977", "8 777-222-22-22", "admin1@gmail.com", "12345");
+         Admin a2 = new Admin("Leyla", "Rozykovna", "22/02/1973", "8 777-222-22-23", "admin2@gmail.com", "12345");
+         Database.users.add(a1);
+         Database.users.add(a2);
 
-        Teacher t1 = new Teacher("Mels", "Begenov", "22/02/1983", "8 777-123-23-23", "mels@gmail.com", "12345", Status.SENIOR_LECTOR, "10 years");
-        Teacher t2 = new Teacher("Aldamuratov", "Zhomart", "22/02/1983", "8 777-123-23-23", "kibokz.a@gmail.com", "12345", Status.SENIOR_LECTOR, "10 years");
-        Database.users.add(t1);
-        Database.users.add(t2);
+         Message me1 = new Message("Alimzhan", "m.begenov@kbtu.kz", "Greetings", "Hello Mels. When do you release student points?");
+         Message me2 = new Message("Mels", "a.amanov@kbtu.kz", "Hi", "Good morning Alimzhan. Today.");
+         Database.messages.add(me1);
+         Database.messages.add(me2);
 
-        Admin a1 = new Admin("Alfiya", "Khalitova", "22/09/1977", "8 777-222-22-22", "admin1@gmail.com", "12345");
-        Admin a2 = new Admin("Leyla", "Rozykovna", "22/02/1973", "8 777-222-22-23", "admin2@gmail.com", "12345");
-        Database.users.add(a1);
-        Database.users.add(a2);
+         Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "12345", "20b030760", 3, Faculty.SITE, Degree.BACHELOR);
+         Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "12345", "20b000000", 3, Faculty.SITE, Degree.BACHELOR);
+         Database.users.add(s1);
+         Database.users.add(s2);
 
-        Message me1 = new Message("Alimzhan", "m.begenov@kbtu.kz", "Greetings", "Hello Mels. When do you release student points?");
-        Message me2 = new Message("Mels", "a.amanov@kbtu.kz", "Hi", "Good morning Alimzhan. Today.");
-        Database.messages.add(me1);
-        Database.messages.add(me2);
+         Librarian l1 = new Librarian("Librarian1", "Librarianov1", "21/12/1960", "8 777-123-34-55", "lib1@gmai.com", "12345");
+         Librarian l2 = new Librarian("Librarian2", "Librarianov2", "20/12/1961", "8 777-123-34-51", "lib2@gmai.com", "12345");
+         Database.users.add(l1);
+         Database.users.add(l2);
+         
+         Manager m1 = new Manager("Dana", "Akhmetzhan", "21/01/1985", " 8 707-111-11-11", "dana@gmail.com", "12345", Managers.DEPARTMENTS); 
+         Manager m2 = new Manager("Nazym", "Aidarkhanova", "8/03/1983", " 8 707-112-12-12", "nazym@gmail.com", "12345", Managers.OR); 
+         Database.users.add(m1); 
+         Database.users.add(m2); 
 
-        Student s1 = new Student("Almira", "Khalitova", "15/06/2002", "8 777-777-77-77", "almirderland@gmail.com", "12345", "20b030760", 3, Faculty.SITE, Degree.BACHELOR);
-        Student s2 = new Student("Aruzhan", "Sakenova", "25/07/2002", "8 777-777-77-77", "sakesha@gmail.com", "12345", "20b000000", 3, Faculty.SITE, Degree.BACHELOR);
-        Database.users.add(s1);
-        Database.users.add(s2);
+         Book b1 = new Book("Thomas Calculus", "B1", "Thomas");
+         Book b2 = new Book("Ryabushko", "B2", "Evgeniy");
+         Database.books.add(b1);
+         Database.books.add(b2);
 
-        Librarian l1 = new Librarian("Librarian1", "Librarianov1", "21/12/1960", "8 777-123-34-55", "lib1@gmai.com", "12345");
-        Librarian l2 = new Librarian("Librarian2", "Librarianov2", "20/12/1961", "8 777-123-34-51", "lib2@gmai.com", "12345");
-        Database.users.add(l1);
-        Database.users.add(l2);
-        
-        Manager m1 = new Manager("Dana", "Akhmetzhan", "21/01/1985", " 8 707-111-11-11", "dana@gmail.com", "12345", Managers.DEPARTMENTS); 
-        Manager m2 = new Manager("Nazym", "Aidarkhanova", "8/03/1983", " 8 707-112-12-12", "nazym@gmail.com", "12345", Managers.OR); 
-        Database.users.add(m1); 
-        Database.users.add(m2); 
+         News n1 = new News("1", "Registration 2022-2023 Fall", "Registration will start 10th of Jan");
+         News n2 = new News("2", "Exam", "The exam session is transferred to the online format");
+         Database.news.add(n1);
+         Database.news.add(n2);
 
-        Book b1 = new Book("Thomas Calculus", "B1", "Thomas");
-        Book b2 = new Book("Ryabushko", "B2", "Evgeniy");
-        Database.books.add(b1);
-        Database.books.add(b2);
+         File f1 = new File("OOP_Project", "CSCI2106", "Here should be project");
+         File f2 = new File("OOP_Diagram", "CSCI2106", "Here should be diagram");
+         File f3 = new File("SE_Assessment1", "CSCI2208", "This is your assessment");
+         File f4 = new File("SE_Assessment1", "CSCI2208", "This is your assessment");
+         Database.files.add(f1);
+         Database.files.add(f2);
+         Database.files.add(f3);
+         Database.files.add(f4);
+         
+         Database.teacherRatings.put("Zhomart", 5);
+         Database.teacherRatings.put("Zhomart", 5);
+         Database.teacherRatings.put("Zhomart", 5);
+         
+         s1.courseMarks.put(c1, null);
+         s1.courseMarks.put(c2, null);
+         
+         t1.putMark("Software Engineering", "20b030760", 30.0, 30.0, 40.0);
 
-        News n1 = new News("1", "Registration 2022-2023 Fall", "Registration will start 10th of Jan");
-        News n2 = new News("2", "Exam", "The exam session is transferred to the online format");
-        Database.news.add(n1);
-        Database.news.add(n2);
-
-        File f1 = new File("OOP_Project", "CSCI2106", "Here should be project");
-        File f2 = new File("OOP_Diagram", "CSCI2106", "Here should be diagram");
-        File f3 = new File("SE_Assessment1", "CSCI2208", "This is your assessment");
-        File f4 = new File("SE_Assessment1", "CSCI2208", "This is your assessment");
-        Database.files.add(f1);
-        Database.files.add(f2);
-        Database.files.add(f3);
-        Database.files.add(f4);
-        
-        Database.teacherRatings.put("Zhomart", 5);
-        Database.teacherRatings.put("Zhomart", 5);
-        Database.teacherRatings.put("Zhomart", 5);
-        
-        s1.courseMarks.put(c1, null);
-        s1.courseMarks.put(c2, null);
-        
-        t1.putMark("Software Engineering", "20b030760", 30.0, 30.0, 40.0);
-
-        Database.save();
-        Database.load();
-
+         Database.save();
+//         Database.load();
 
         System.out.println("Press q to quit.");
         System.out.println("Enter your login: ");
@@ -690,9 +692,7 @@ public class Tester {
                     System.out.println("Wrong password.");
                 }
             }
-
         }
-        System.out.println(Database.studentRegistration.toString());
 
     }
 }

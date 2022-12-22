@@ -18,11 +18,8 @@ public class Database implements Serializable {
     protected static HashMap<String, Book> orders = new HashMap<>();
     protected static Vector<Message> messages = new Vector<>();
     protected static Vector<File> files = new Vector<>();
-    protected static HashMap<String, String> logFiles = new HashMap<>();
     protected static HashSet<Book> books = new HashSet<>();
     protected static Vector<News> news = new Vector<>();
-    protected static Vector<Lesson> lessons = new Vector<>();
-
     public static Vector<Course> getCourses() {
         return courses;
     }
@@ -88,14 +85,6 @@ public class Database implements Serializable {
         Database.files = files;
     }
 
-    public static HashMap<String, String> getLogFiles() {
-        return logFiles;
-    }
-
-    public static void setLogFiles(HashMap<String, String> logFiles) {
-        Database.logFiles = logFiles;
-    }
-
     public static HashSet<Book> getBooks() {
         return books;
     }
@@ -110,14 +99,6 @@ public class Database implements Serializable {
 
     public static void setNews(Vector<News> news) {
         Database.news = news;
-    }
-
-    public static Vector<Lesson> getLessons() {
-        return lessons;
-    }
-
-    public static void setLessons(Vector<Lesson> lessons) {
-        Database.lessons = lessons;
     }
 
     public static final Database instance; 

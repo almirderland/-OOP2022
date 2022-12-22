@@ -142,13 +142,9 @@ public class Teacher extends Employee {
             {
                 Student student = (Student) user;
                 if(student.getId().equals(studentId)) {
-                    System.out.println(123);
-
                     for (Map.Entry<Course, Mark> courseMark : student.courseMarks.entrySet()) {
-                        System.out.println(1234);
                         if(courseMark.getKey().getCourseName().equals(courseName)){
                             courseMark.setValue(m);
-                            System.out.println(12345);
                         }
                     }
                 }
